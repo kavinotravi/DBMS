@@ -1,0 +1,148 @@
+<?php
+	session_start();
+	require("connect.php");
+	$tag="";
+	if (isset($_GET['tag']))
+	$tag=$_GET['tag'];
+
+
+
+
+$msg = "";
+
+if(isset($_POST['btn_subside']) ){
+	$adddrop=$_POST['adddrop']; 
+	$nextr=$_POST['nextr'];
+	$gradesub=$_POST['gradesub'];
+$yearb=$_POST['yearbot'];
+$semb=$_POST['sembot'];
+
+	echo $adddrop;
+
+$del_sql=mysqli_query($con,"DELETE FROM management");
+
+
+
+$sql_in=mysqli_query($con,"INSERT INTO management 
+						VALUES ('$adddrop','$nextr','$gradesub','$yearb','$semb')");
+
+
+
+
+
+
+
+	/*if($sql_in=='true')
+		echo "Changes made"; /*"<div style='padding: 20px;margin-bottom: 25px;''>"
+                . "<span class='p_font'>"
+                . "<center>                <h3>        Record Updated Successfully... !</h3></center>"
+                . "</span>"
+                . "</div>";
+	else
+		$msg="Update Failed...!";*/
+}
+
+echo $msg
+/*
+if($sql_in==true)
+	$msg="1 Row Inserted";
+else
+	$msg="Insert Error:".mysqli_error($con);
+
+*/
+?>
+
+
+
+
+
+
+
+
+
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<title>Welcome to University Management system</title>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="jquery-1.11.0.js"></script>
+<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css"/>
+<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css"/>
+<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-theme.css"/>
+<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-theme.min.css"/>
+<script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
+<link rel="stylesheet" type="text/css" href="css/home.css" />
+</head>
+
+<body style="width: 100%;">
+    <div class="logout_btn">
+        <a href="index.php" class="btn btn-primary btn-large">Logout <i class="icon-white icon-check"></i></a>
+    </div>
+    
+    <div class="img_home_pos">
+        <a href="admin.php"><img src="images/img21.jpg" height="90" alt="IIT KANPUR" /></a><span class="header_pos">IIT KANPUR</span>
+    </div><br>
+    
+                    
+                    <div style="position:absolute; left:10px; top:12px;" >
+                            <?php        
+                            include './drop_down_menu.php';
+                            ?>
+                        </div>
+		
+			
+			
+			<div style="position:absolute; left:200px; top:120px;">
+				<?php
+   						if($tag=="home" or $tag=="")
+							include("home.php");
+                        elseif($tag=="student_entry")
+                            include("Students_Entry.php");
+                        elseif($tag=="teachers_entry")
+                            include("Teachers_Entry.php");
+                        elseif($tag=="staff_entry")
+                            include("staff_Entry.php");	
+                        elseif($tag=="DUGC_entry")
+                            include("DUGC_Entry.php");
+                        elseif($tag=="course_entry")
+                            include("course_Entry.php");
+                        elseif($tag=="offering_entry")
+                            include("offering_Entry.php");	
+						elseif($tag=="view_teachers")
+							include("View_Teachers.php");
+						elseif($tag=="view_students")
+							include("View_Students.php");
+						elseif($tag=="view_courses")
+							include("View_Courses.php");
+						elseif($tag=="view_offering")
+							include("View_Offering.php");
+						elseif($tag=="view_staff")
+							include("View_Staff.php");
+						elseif($tag=="view_DUGC")
+							include("View_DUGC.php");
+						elseif($tag=="view_registration")
+							include("View_Registration.php");
+						elseif($tag=="view_leave_approved")
+							include("view_leave_approved.php");
+						elseif($tag=="view_leave_pending")
+							include("view_leave_pending.php");("view_staff_leave_approved.php");	
+							/*$tag= $_REQUEST['tag'];
+							
+							/*if(empty($tag)){
+								include ("Students_Entry.php");
+							}
+							else{
+								include $tag;
+							}*/
+									
+                        ?>
+                   
+		</div>                
+	
+        
+        <div class="bottom_pos">
+            <a href="AboutManagement.php" style="text-decoration: none;">About management</a>
+        </div>
+
+
+</body>
+</html>

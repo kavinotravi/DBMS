@@ -1,0 +1,29 @@
+<?php
+	session_start();
+	
+	require("conection/connect.php");
+	
+	$msg="";
+	if(isset($_POST['btn_log'])){
+		$uname=$_POST['unametxt'];
+		$pwd=$_POST['pwdtxt'];
+		
+		$sql=mysqli_query($con,"SELECT * FROM users_tbl
+								WHERE username='$uname' AND password='$pwd' 
+								
+							");
+						
+		$cout=mysqli_num_rows($sql);
+			if($cout>0){
+				$row=mysqli_fetch_array($sql);
+					if($row['type']=='admin')
+						$msg="Login trov hery!.....";	
+						header("location: everyone.php");
+					
+			}
+			
+			else
+					$msg="Invalid login authentication, try again/Contact admin for login permission";
+}
+
+?>
