@@ -1,6 +1,6 @@
 # DBMS
-Project for Database Management System
-University Management System
+## Project for Database Management System
+### University Management System
 First instal XAMPP for windows from https://www.apachefriends.org/index.html - XAMPP for Windows 7.3.4 (PHP 7.3.4).
 Put the DBMS folder in htdocs in C:/xampp (or where ever you have installed it).
 open phpmyadmin and import mydb.sql in mydb databse. 
